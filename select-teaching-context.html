@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Teaching Context</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 3rem 2rem;
+            max-width: 500px;
+            text-align: center;
+            margin: 1rem;
+        }
+        h1 {
+            color: #185a9d;
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+        .prompt {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #444;
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            background: #43cea2;
+            color: white;
+            transition: background 0.2s;
+        }
+        .btn.ensign {
+            background: #185a9d;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .url-box {
+            display: none;
+            margin-top: 2rem;
+            background: #f1f8e9;
+            border-left: 4px solid #43cea2;
+            padding: 1.2rem;
+            border-radius: 0 8px 8px 0;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+        .url-box.ensign {
+            background: #e3f2fd;
+            border-left: 4px solid #185a9d;
+        }
+        .url-label {
+            font-weight: 600;
+            color: #185a9d;
+        }
+        .url-link {
+            color: #43cea2;
+            font-weight: 500;
+            word-break: break-all;
+        }
+        .url-box.ensign .url-label {
+            color: #185a9d;
+        }
+        .url-box.ensign .url-link {
+            color: #185a9d;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Which CS 104 do you teach?</h1>
+        <div class="prompt">
+            Please select your teaching context to get the correct GitGrade link:
+        </div>
+        <div class="btn-group">
+            <button class="btn pathway" onclick="showUrl('pathway')">I teach Pathway CS 104</button>
+            <button class="btn ensign" onclick="showUrl('ensign')">I teach On Campus Ensign College CS 104</button>
+        </div>
+        <div id="pathway-url" class="url-box">
+            <span class="url-label">Pathway GitGrade URL:</span><br>
+            <a class="url-link" href="https://git-grade.com" target="_blank">https://git-grade.com</a>
+        </div>
+        <div id="ensign-url" class="url-box ensign">
+            <span class="url-label">Ensign College GitGrade URL:</span><br>
+            <a class="url-link" href="https://ensign.git-grade.com" target="_blank">https://ensign.git-grade.com</a>
+        </div>
+    </div>
+    <script>
+        function showUrl(type) {
+            document.getElementById('pathway-url').style.display = 'none';
+            document.getElementById('ensign-url').style.display = 'none';
+            if (type === 'pathway') {
+                document.getElementById('pathway-url').style.display = 'block';
+            } else if (type === 'ensign') {
+                document.getElementById('ensign-url').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
